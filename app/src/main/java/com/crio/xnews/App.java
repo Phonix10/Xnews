@@ -29,19 +29,19 @@ public class App {
             List<UserPreference> userPreferences = readUserPreferences(filePath);
             userPreferences.forEach(System.out::println);
 
-        //    NewsApiClient newsApiClient = new NewsApiClient();
-        //    for (UserPreference userPreference : userPreferences) {
-        //        String query = userPreference.getName();
-        //        String language = userPreference.getLanguage();
-        //        String sortBy = userPreference.getSortBy();
-        //        List<NewsArticle> articles = newsApiClient.fetchNewsArticles(query, language, sortBy);
-        //         System.out.println("News for " + query + ":");
-        //         System.out.println(articles.size());
-        //         // for (NewsArticle article : articles) {
-        //         //     System.out.println(article);
-        //         //     System.out.println("----------");
-        //         // }
-        // }
+           NewsApiClient newsApiClient = new NewsApiClient();
+           for (UserPreference userPreference : userPreferences) {
+               String query = userPreference.getName();
+               String language = userPreference.getLanguage();
+               String sortBy = userPreference.getSortBy();
+               List<NewsArticle> articles = newsApiClient.fetchNewsArticles(query, language, sortBy);
+                System.out.println("News for " + query + ":");
+                System.out.println(articles.size());
+                // for (NewsArticle article : articles) {
+                //     System.out.println(article);
+                //     System.out.println("----------");
+                // }
+        }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,7 +54,7 @@ public class App {
 // If there is an error during file reading or JSON parsing, an IOException is thrown.
 
     public static List<UserPreference> readUserPreferences(String filePath) throws IOException {
-
-        return Collections.emptyList();
+        ObjectMapper objectsMapper = new ObjectMapper();
+        return objectsMapper.readvalue(new File(filePath),new TypeReference<List<UserPreference>>(){});
     }
 }

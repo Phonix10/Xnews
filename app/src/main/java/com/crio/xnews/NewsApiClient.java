@@ -7,7 +7,7 @@ import java.util.Collections;
 public class NewsApiClient {
 
     private static final String API_URL = "https://newsapi.org/v2/everything";
-    private static final String API_KEY = "<_YOUR_API_KEY_>";
+    private static final String API_KEY = "128bdaa543fc4f5592a5448d9e80fe36";
 
 // TODO: CRIO_TASK_MODULE_PROJECT
 // Utilize the Okhttp3 library to send a request to the News API, including the provided query, language, and sortBy parameters.
