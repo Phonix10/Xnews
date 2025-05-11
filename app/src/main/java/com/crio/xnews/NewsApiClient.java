@@ -18,7 +18,23 @@ public class NewsApiClient {
 
     public List<NewsArticle> fetchNewsArticles(String query, String language, String sortBy) throws IOException {
 
-        return Collections.emptyList();
+        if (query == null || query.trim().isEmpty()){
+            throw new IllegalArgumentException("Query parameter must not be empty");
+        }
+        String url = buildUrl(query, language, sortBy);
+        Request request =  new Request.Builder().url(url).build();
+        System.out.println("Request URL: " + url);
+        
+         try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+                throw new IOException("Unexpected response code: " + response.code());
+            }
+
+
+            String jsonResponse = response.body().string();
+            return NewsParser.parse(jsonResponse);
+        }
+
     }
 
 // TODO: CRIO_TASK_MODULE_PROJECT
@@ -39,6 +55,6 @@ public class NewsApiClient {
             urlBuilder.append("&sortBy=").append(sortBy);   
         }
 
-      return urlBuilder.toString();
+        return urlBuilder.toString();
     }
 }
