@@ -29,7 +29,16 @@ public class NewsApiClient {
 // The "language" and "sortBy" parameters are optional and will be included in the URL if they are non-empty.
 
     private String buildUrl(String query, String language, String sortBy) {
+        StringBuilder urlBuilder = new StringBuilder(API_URL);
+        urlBuilder.append("?q=").append(query);
+        urlBuilder.append("&apiKey=").append(API_KEY);
+        if(language != null && !language.isEmpty()){
+            urlBuilder.append("&language=").append(language);
+        }
+        if (sortBy != null && !sortBy.isEmpty()) {
+            urlBuilder.append("&sortBy=").append(sortBy);   
+        }
 
-      return "";
+      return urlBuilder.toString();
     }
 }
