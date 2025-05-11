@@ -13,6 +13,10 @@ public class NewsParser {
 // Deserialize JSON String representing the response from the News API and 
 // then return the list of NewsArticle objects contained in the response.
 
+
+
+//https://newsapi.org/v2/everything?q=tesla&from=2025-04-10&sortBy=publishedAt&apiKey=API_KEY
+
     public static List<NewsArticle> parse(String json) throws IOException {
 
         return Collections.emptyList();

@@ -48,11 +48,6 @@ public class App {
 
     }
 
-// TODO: CRIO_TASK_MODULE_PROJECT
-// Loads the JSON file from the provided file path 
-// Parse its content into a list of UserPreference objects using Jackson's ObjectMapper, and returns the list. 
-// If there is an error during file reading or JSON parsing, an IOException is thrown.
-
     public static List<UserPreference> readUserPreferences(String filePath) throws IOException {
         ObjectMapper objectsMapper = new ObjectMapper();
         return objectsMapper.readvalue(new File(filePath),new TypeReference<List<UserPreference>>(){});
