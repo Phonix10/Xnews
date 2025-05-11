@@ -9,16 +9,22 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class NewsParser {
     private static final ObjectMapper objectMapper = new ObjectMapper();
 
-// TODO: CRIO_TASK_MODULE_PROJECT
-// Deserialize JSON String representing the response from the News API and 
-// then return the list of NewsArticle objects contained in the response.
 
-
-
-//https://newsapi.org/v2/everything?q=tesla&from=2025-04-10&sortBy=publishedAt&apiKey=API_KEY
 
     public static List<NewsArticle> parse(String json) throws IOException {
+        if (json == null || json.isEmpty()) {
+            return Collections.emptyList();
+        }
+        try{
+            NewsApiResponse response = objectMapper.readvalue(json, NewsApiResponse);
+            if (response == null || response.getArticles()== null){
+                return Collections.emptyList();
+            }else{
+                return response.getArticles();
+            }
+        }catch (IOException e) {
+            throw new IOException("Error parsing JSON: " + e.getMessage(), e);
+        }
 
-        return Collections.emptyList();
     }
 }

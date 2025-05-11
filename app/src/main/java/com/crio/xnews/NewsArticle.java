@@ -19,9 +19,7 @@ public class NewsArticle {
     private String content;
 
 
-    public NewsArticle() {
-        // Default constructor
-    }
+    public NewsArticle() {}
     public NewsArticle(String title, String description, String author, String url, String publishedAt, String content) {
         this.title = title;
         this.description = description;
